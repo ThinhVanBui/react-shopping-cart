@@ -1,11 +1,11 @@
 // feature 1
 import React from 'react';
-import Filter from './components/Filter';
-import Products from './components/Products';
-import Cart from "./components/Cart";
 import store from "./store";
+import HomeScreen from "./screens/HomeScreen"
+import AdminScreen from "./screens/AdminScreen"
 import { Provider } from "react-redux";
 import Modal from "react-modal";
+import { BrowserRouter, Route, Link } from "react-router-dom"
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,27 +14,21 @@ class App extends React.Component {
 render() {
     return (
       <Provider store={store}>
-      <div className="grid-container">
-        <header>
-          <a href="/">React Shopping Cart</a>
-        </header>
-        <main>
-          <div className="content">
-            <div className="main">
-              <Filter 
-              ></Filter>
-              <Products>
-              </Products>
-            </div>
-            <div className="sidebar">
-            <Cart />
-            </div>
+        <BrowserRouter>
+          <div className="grid-container">
+            <header>
+              <Link to="/">React Shopping Cart</Link>
+              <Link to="/admin" className="admin">Admin</Link>
+            </header>
+            <main>
+              <Route path="/admin" component={AdminScreen}/>
+              <Route path="/" component={HomeScreen} exact/>
+            </main>
+            <footer>
+              All right is reserved.
+            </footer>
           </div>
-        </main>
-        <footer>
-          All right is reserved.
-        </footer>
-      </div>
+        </BrowserRouter>
       </Provider>
     ); 
   }
