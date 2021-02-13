@@ -5,13 +5,10 @@ import Products from './components/Products';
 import Cart from "./components/Cart";
 import store from "./store";
 import { Provider } from "react-redux";
+import Modal from "react-modal";
 
+Modal.setAppElement("main")
 class App extends React.Component {
-  createOrder = (order) => {
-    alert("Need to save order for " + order.name);
-  };
-
-
   render() {
     return (
       <Provider store={store}>
@@ -28,9 +25,7 @@ class App extends React.Component {
               </Products>
             </div>
             <div className="sidebar">
-            <Cart
-                createOrder={this.createOrder}
-              />
+            <Cart />
             </div>
           </div>
         </main>
