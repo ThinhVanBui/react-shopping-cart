@@ -7,9 +7,11 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Modal from "react-modal";
 
-Modal.setAppElement("main")
 class App extends React.Component {
-  render() {
+  componentDidMount() {
+    Modal.setAppElement("main")
+  }
+render() {
     return (
       <Provider store={store}>
       <div className="grid-container">
